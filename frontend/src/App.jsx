@@ -1,12 +1,23 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import ComingSoon from './components/ComingSoon'
 import AppLayout from './layouts/AppLayout'
+import FarmerLayout from './layouts/FarmerLayout'
 import ForgotPassword from './pages/auth/ForgotPassword'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import NotFound from './pages/errors/NotFound'
+import Alerts from './pages/farmer/Alerts'
+import CropAdvisory from './pages/farmer/CropAdvisory'
 import FarmerDashboard from './pages/farmer/Dashboard'
+import DetectionResult from './pages/farmer/DetectionResult'
+import FollowUpDetails from './pages/farmer/FollowUpDetails'
+import FollowUps from './pages/farmer/FollowUps'
+import MyReports from './pages/farmer/MyReports'
+import NearbyHotspots from './pages/farmer/NearbyHotspots'
 import NewReport from './pages/farmer/NewReport'
+import Profile from './pages/farmer/Profile'
+import ReportDetails from './pages/farmer/ReportDetails'
+import RiskAssessment from './pages/farmer/RiskAssessment'
 import LegalPage from './pages/public/LegalPage'
 import Landing from './pages/public/Landing'
 import ProtectedRoute from './routes/ProtectedRoute'
@@ -34,23 +45,28 @@ export default function App() {
 
       {/* Everything below needs a session, then the right role */}
       <Route element={<ProtectedRoute />}>
-        <Route element={<AppLayout />}>
-          <Route element={<RoleProtectedRoute roles={[ROLES.FARMER]} />}>
+        {/* Farmer area uses its own layout (top nav + sample weather chip) */}
+        <Route element={<RoleProtectedRoute roles={[ROLES.FARMER]} />}>
+          <Route element={<FarmerLayout />}>
             <Route path="/farmer">
               <Route index element={<Navigate to="dashboard" replace />} />
               <Route path="dashboard" element={<FarmerDashboard />} />
-              <Route path="reports/new" element={<NewReport />} />
-              <Route path="reports" element={soon('My Reports', 'Every report you have submitted, with its status.')} />
-              <Route path="reports/:id" element={soon('Detection Result', 'The AI findings, risk and advisory for one report.')} />
-              <Route path="risk" element={soon('Risk Assessment', 'Weather-based risk for your crops and location.')} />
-              <Route path="advisory" element={soon('Advisory', 'Guidance and preventive measures in English, Hindi or Marathi.')} />
-              <Route path="hotspots" element={soon('Nearby Hotspots', 'Disease and pest activity around your farm on a map.')} />
-              <Route path="alerts" element={soon('Alerts', 'High-risk and hotspot alerts for your area.')} />
-              <Route path="follow-ups" element={soon('Follow-ups', 'Track each case until it is resolved.')} />
-              <Route path="profile" element={soon('Profile', 'Your account details and preferences.')} />
+              <Route path="new-report" element={<NewReport />} />
+              <Route path="reports" element={<MyReports />} />
+              <Route path="reports/:id" element={<ReportDetails />} />
+              <Route path="reports/:id/detection" element={<DetectionResult />} />
+              <Route path="reports/:id/risk" element={<RiskAssessment />} />
+              <Route path="reports/:id/advisory" element={<CropAdvisory />} />
+              <Route path="hotspots" element={<NearbyHotspots />} />
+              <Route path="alerts" element={<Alerts />} />
+              <Route path="follow-ups" element={<FollowUps />} />
+              <Route path="follow-ups/:id" element={<FollowUpDetails />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
           </Route>
+        </Route>
 
+        <Route element={<AppLayout />}>
           <Route element={<RoleProtectedRoute roles={[ROLES.EXPERT]} />}>
             <Route path="/expert">
               <Route index element={<Navigate to="dashboard" replace />} />
