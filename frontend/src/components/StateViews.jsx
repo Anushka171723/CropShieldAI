@@ -18,7 +18,7 @@ export function ErrorState({ message, onRetry }) {
       <p className="font-semibold text-slate-900">Something went wrong</p>
       <p className="text-sm text-slate-600">{message}</p>
       {onRetry && (
-        <button onClick={onRetry} className="mt-1 inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+        <button onClick={onRetry} className="mt-1 inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-surface px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
           <RefreshCw className="h-4 w-4" /> Try again
         </button>
       )}

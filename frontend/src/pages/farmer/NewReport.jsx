@@ -4,13 +4,13 @@ import { AlertCircle, CheckCircle2, Lightbulb, Loader2, Send } from 'lucide-reac
 import ImageUploader from '../../components/ImageUploader'
 import LocationPicker from '../../components/LocationPicker'
 import PageContainer from '../../components/PageContainer'
-import { createReport } from '../../services/reportService'
+import { createReport } from '../../services/farmerService'
 import { CROPS, GROWTH_STAGES, SYMPTOMS, VARIETIES } from '../../utils/cropOptions'
 
-const initial = { crop: '', variety: '', growthStage: '', symptoms: [], notes: '' }
+const initial = { crop: '', variety: '', growthStage: '', symptoms: [], symptomStart: '', notes: '' }
 
 const fieldClass = (error) =>
-  `block w-full rounded-lg border bg-white px-3.5 py-2.5 text-[15px] text-slate-900 placeholder:text-slate-400 transition focus:outline-none focus:ring-2 ${
+  `block w-full rounded-lg border bg-surface px-3.5 py-2.5 text-[15px] text-slate-900 placeholder:text-slate-400 transition focus:outline-none focus:ring-2 ${
     error ? 'border-red-400 focus:border-red-500 focus:ring-red-200' : 'border-slate-300 focus:border-brand-600 focus:ring-brand-200'
   }`
 
@@ -85,7 +85,7 @@ export default function NewReport() {
     try {
       const { id } = await createReport({ ...form, notes: form.notes.trim(), location, image })
       setStatus('success')
-      setTimeout(() => navigate(`/farmer/reports/${id}`, { state: { justSubmitted: true } }), 1200)
+      setTimeout(() => navigate(`/farmer/reports/${id}/detection`, { state: { justSubmitted: true } }), 1200)
     } catch (err) {
       setSubmitError(err.message)
       setStatus('idle')
@@ -104,7 +104,7 @@ export default function NewReport() {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
-        <form onSubmit={handleSubmit} noValidate className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7">
+        <form onSubmit={handleSubmit} noValidate className="rounded-xl border border-slate-200 bg-surface p-5 sm:p-7">
           <Step number="1" title="Crop details">
             <div className="grid gap-4 sm:grid-cols-3">
               <Field label="Crop" htmlFor="crop" error={errors.crop}>
@@ -167,7 +167,7 @@ export default function NewReport() {
                       clearError('symptoms')
                     }}
                     className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition ${
-                      on ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-brand-400'
+                      on ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-surface text-slate-700 hover:border-brand-400'
                     }`}
                   >
                     {s}
@@ -175,7 +175,7 @@ export default function NewReport() {
                 )
               })}
             </div>
-            <div className="mt-4">
+            <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_220px]">
               <Field label="Anything else you noticed?" htmlFor="notes" optional error={errors.symptoms}>
                 <textarea
                   id="notes"
@@ -189,6 +189,17 @@ export default function NewReport() {
                   }}
                   disabled={busy}
                   className={fieldClass(errors.symptoms)}
+                />
+              </Field>
+              <Field label="Symptoms first noticed on" htmlFor="symptomStart" optional>
+                <input
+                  id="symptomStart"
+                  type="date"
+                  max={new Date().toISOString().slice(0, 10)}
+                  value={form.symptomStart}
+                  onChange={set('symptomStart')}
+                  disabled={busy}
+                  className={fieldClass()}
                 />
               </Field>
             </div>

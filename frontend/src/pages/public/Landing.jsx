@@ -1,4 +1,4 @@
-﻿import FinalCta from '../../components/landing/FinalCta'
+import FinalCta from '../../components/landing/FinalCta'
 import LandingFooter from '../../components/landing/LandingFooter'
 import LandingHeader from '../../components/landing/LandingHeader'
 import AboutSection from './sections/AboutSection'
@@ -10,7 +10,7 @@ import WhySection from './sections/WhySection'
 
 export default function Landing() {
   return (
-    <div className="bg-white">
+    <div className="bg-surface">
       <LandingHeader />
       <main>
         <Hero />

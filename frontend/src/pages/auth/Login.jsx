@@ -144,7 +144,7 @@ export default function Login() {
                   setErrors({})
                   setSubmitError('')
                 }}
-                className="rounded-md border border-amber-300 bg-white px-2.5 py-1 font-medium text-amber-900 transition-colors hover:bg-amber-100 focus-visible:outline-2 focus-visible:outline-brand-500 disabled:opacity-60"
+                className="rounded-md border border-amber-300 bg-surface px-2.5 py-1 font-medium text-amber-900 transition-colors hover:bg-amber-100 focus-visible:outline-2 focus-visible:outline-brand-500 disabled:opacity-60"
               >
                 {ROLE_LABEL[a.role]}
               </button>

@@ -51,7 +51,7 @@ export default function ImageUploader({ file, onChange, error, onError, disabled
       />
 
       {preview ? (
-        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-surface">
           <img src={preview} alt="Selected crop" className="max-h-80 w-full bg-slate-100 object-contain" />
           <div className="flex items-center justify-between gap-3 border-t border-slate-100 px-4 py-2.5 text-sm">
             <span className="min-w-0 truncate text-slate-600">
@@ -81,7 +81,7 @@ export default function ImageUploader({ file, onChange, error, onError, disabled
             if (!disabled) accept(e.dataTransfer.files?.[0])
           }}
           className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed px-4 py-10 text-center transition ${
-            dragging ? 'border-brand-500 bg-brand-50' : error ? 'border-red-300 bg-red-50/40' : 'border-slate-300 bg-white hover:border-brand-400 hover:bg-brand-50/40'
+            dragging ? 'border-brand-500 bg-brand-50' : error ? 'border-red-300 bg-red-50/40' : 'border-slate-300 bg-surface hover:border-brand-400 hover:bg-brand-50/40'
           }`}
         >
           <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-700">

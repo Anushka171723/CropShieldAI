@@ -9,7 +9,7 @@ export default function LandingFooter() {
   const cta = useCta()
 
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-slate-200 bg-surface">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <Logo />

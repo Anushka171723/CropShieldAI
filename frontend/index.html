@@ -10,6 +10,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>CropShield AI</title>
+    <script>
+      // Set the theme before the first paint so there is no flash. Same rule as ThemeProvider:
+      // a saved choice wins, otherwise follow the operating system.
+      ;(function () {
+        try {
+          var theme = localStorage.getItem('cropshield_theme')
+          if (theme !== 'light' && theme !== 'dark') {
+            theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          }
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+        } catch (e) {}
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

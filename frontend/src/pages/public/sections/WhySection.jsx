@@ -5,7 +5,7 @@ import { WHY_POINTS } from '../landingContent'
 
 export default function WhySection() {
   return (
-    <section id="why" aria-labelledby="why-heading" className="scroll-mt-16 bg-white">
+    <section id="why" aria-labelledby="why-heading" className="scroll-mt-16 bg-surface">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-8 lg:py-24">
         <Reveal>
           <SmartImage
@@ -23,7 +23,7 @@ export default function WhySection() {
 
           <dl className="mt-8 divide-y divide-slate-200 border-y border-slate-200">
             {WHY_POINTS.map(({ title, text }) => (
-              <div key={title} className="grid gap-1 py-4 transition-colors duration-200 hover:bg-[#f6f9f3] sm:grid-cols-[14rem_1fr] sm:gap-6 sm:px-3 sm:-mx-3">
+              <div key={title} className="grid gap-1 py-4 transition-colors duration-200 hover:bg-section sm:grid-cols-[14rem_1fr] sm:gap-6 sm:px-3 sm:-mx-3">
                 <dt className="font-semibold text-brand-900">{title}</dt>
                 <dd className="text-slate-600">{text}</dd>
               </div>

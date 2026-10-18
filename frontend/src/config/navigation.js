@@ -1,9 +1,10 @@
 // Top-navigation items for each role. Every `to` has a matching route in App.jsx.
+// Without `end`, a link also stays highlighted on its child pages (e.g. My Reports on /farmer/reports/:id).
 export const NAV_ITEMS = {
   FARMER: [
     { to: '/farmer/dashboard', label: 'Home' },
-    { to: '/farmer/reports/new', label: 'New Crop Report' },
-    { to: '/farmer/reports', label: 'My Reports', end: true },
+    { to: '/farmer/new-report', label: 'New Report' },
+    { to: '/farmer/reports', label: 'My Reports' },
     { to: '/farmer/hotspots', label: 'Nearby Hotspots' },
     { to: '/farmer/alerts', label: 'Alerts' },
     { to: '/farmer/follow-ups', label: 'Follow-ups' },

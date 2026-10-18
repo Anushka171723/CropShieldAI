@@ -11,7 +11,7 @@ export default function HowItWorksSection() {
   const lineBase = 'absolute bg-brand-200 motion-safe:transition-transform motion-safe:duration-[1100ms] motion-safe:ease-out'
 
   return (
-    <section id="how-it-works" aria-labelledby="how-heading" className="scroll-mt-16 bg-white">
+    <section id="how-it-works" aria-labelledby="how-heading" className="scroll-mt-16 bg-surface">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <Reveal>
           <SectionHeading id="how-heading" eyebrow="How It Works" title="Four steps from a photo to a plan." />
@@ -29,7 +29,7 @@ export default function HowItWorksSection() {
                 inView ? '' : 'motion-safe:translate-y-4 motion-safe:opacity-0'
               }`}
             >
-              <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-800 text-sm font-bold text-white ring-4 ring-white transition-colors duration-200 group-hover:bg-brand-600">
+              <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-800 text-sm font-bold text-white ring-4 ring-surface transition-colors duration-200 group-hover:bg-brand-600">
                 {i + 1}
               </span>
               <div className="lg:mt-5">

@@ -6,7 +6,7 @@ import { ROLE_HOME } from '../../utils/roles'
 export default function NotFound() {
   const { user } = useAuth()
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#f8faf7] px-5 text-center">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-page px-5 text-center">
       <Link to="/" aria-label="CropShield AI home">
         <Logo />
       </Link>
