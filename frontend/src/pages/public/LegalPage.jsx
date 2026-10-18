@@ -4,7 +4,7 @@ import Logo from '../../components/Logo'
 // Placeholder for the legal documents linked from the registration form.
 export default function LegalPage({ title }) {
   return (
-    <div className="min-h-screen bg-[#f8faf7] px-5 py-10">
+    <div className="min-h-screen bg-page px-5 py-10">
       <div className="mx-auto max-w-2xl">
         <Link to="/" aria-label="CropShield AI home">
           <Logo />

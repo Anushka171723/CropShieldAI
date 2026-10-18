@@ -10,7 +10,7 @@ import { CROPS, GROWTH_STAGES, SYMPTOMS, VARIETIES } from '../../utils/cropOptio
 const initial = { crop: '', variety: '', growthStage: '', symptoms: [], symptomStart: '', notes: '' }
 
 const fieldClass = (error) =>
-  `block w-full rounded-lg border bg-white px-3.5 py-2.5 text-[15px] text-slate-900 placeholder:text-slate-400 transition focus:outline-none focus:ring-2 ${
+  `block w-full rounded-lg border bg-surface px-3.5 py-2.5 text-[15px] text-slate-900 placeholder:text-slate-400 transition focus:outline-none focus:ring-2 ${
     error ? 'border-red-400 focus:border-red-500 focus:ring-red-200' : 'border-slate-300 focus:border-brand-600 focus:ring-brand-200'
   }`
 
@@ -104,7 +104,7 @@ export default function NewReport() {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
-        <form onSubmit={handleSubmit} noValidate className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7">
+        <form onSubmit={handleSubmit} noValidate className="rounded-xl border border-slate-200 bg-surface p-5 sm:p-7">
           <Step number="1" title="Crop details">
             <div className="grid gap-4 sm:grid-cols-3">
               <Field label="Crop" htmlFor="crop" error={errors.crop}>
@@ -167,7 +167,7 @@ export default function NewReport() {
                       clearError('symptoms')
                     }}
                     className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition ${
-                      on ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-brand-400'
+                      on ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-surface text-slate-700 hover:border-brand-400'
                     }`}
                   >
                     {s}

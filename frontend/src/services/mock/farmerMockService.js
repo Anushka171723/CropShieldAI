@@ -21,9 +21,12 @@ const alerts = () => loadCollection('alerts', seedAlerts)
 const followUps = () => loadCollection('followUps', seedFollowUps)
 const profile = () => loadCollection('profile', farmerProfile)
 
-// Reports created in this demo session get ids after the last seed report so they sort predictably.
-let nextSeq = Math.max(0, ...seedReports.map((r) => Number(r.id.split('-')[1]) || 0)) + 1
-const newReportId = () => `rpt-${String(1000 + nextSeq++).padStart(4, '0')}`
+// New report ids continue from the highest id already stored (seed or demo-created), so they stay unique
+// and in order even after a page refresh, when any in-memory counter would have been reset.
+const newReportId = () => {
+  const highest = Math.max(0, ...reports().map((r) => Number(r.id.split('-')[1]) || 0))
+  return `rpt-${String(highest + 1).padStart(4, '0')}`
+}
 
 function withDistance(hotspot, center) {
   return { ...hotspot, distanceKm: distanceKm(center, hotspot) }

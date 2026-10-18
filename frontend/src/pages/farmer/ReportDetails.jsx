@@ -9,7 +9,7 @@ import { formatDate } from '../../utils/format'
 
 function Section({ title, children }) {
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-5">
+    <section className="rounded-xl border border-slate-200 bg-surface p-5">
       <h2 className="font-semibold text-slate-900">{title}</h2>
       <div className="mt-3">{children}</div>
     </section>

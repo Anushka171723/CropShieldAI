@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AlertTriangle, ArrowRight, Bell, CalendarClock, Camera, CloudRain, Droplets, FileText, Leaf, Map, Repeat, Sprout, Thermometer } from 'lucide-react'
 import { RiskBadge, StatusBadge } from '../../components/Badges'
@@ -24,7 +24,7 @@ const greeting = () => {
 
 function Panel({ title, to, linkText = 'View all', children, className = '' }) {
   return (
-    <section className={`rounded-xl border border-slate-200 bg-white ${className}`}>
+    <section className={`min-w-0 rounded-xl border border-slate-200 bg-surface ${className}`}>
       <div className="flex items-center justify-between px-4 pt-4 sm:px-5">
         <h2 className="font-semibold text-slate-900">{title}</h2>
         {to && (
@@ -103,7 +103,7 @@ export default function Dashboard() {
       </div>
 
       {/* Stats as one bar, not four cards */}
-      <div className="grid grid-cols-2 divide-slate-200 rounded-xl border border-slate-200 bg-white lg:grid-cols-4 lg:divide-x">
+      <div className="grid grid-cols-2 divide-slate-200 rounded-xl border border-slate-200 bg-surface lg:grid-cols-4 lg:divide-x">
         {STATS.map(({ label, value, to, icon: Icon, accent }, i) => (
           <Link key={label} to={to} className={`flex items-center gap-3 px-4 py-4 hover:bg-slate-50 sm:px-5 ${i > 1 ? 'border-t border-slate-200 lg:border-t-0' : ''} ${i % 2 === 1 ? 'border-l border-slate-200 lg:border-l-0' : ''}`}>
             <Icon className="h-5 w-5 shrink-0 text-slate-400" />
@@ -180,7 +180,7 @@ export default function Dashboard() {
       {/* Quick actions: small links, not feature cards */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {QUICK_ACTIONS.map(({ icon: Icon, label, to }) => (
-          <Link key={label} to={to} className="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3.5 py-3 text-sm font-medium text-slate-800 hover:border-brand-400 hover:bg-brand-50/50">
+          <Link key={label} to={to} className="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-surface px-3.5 py-3 text-sm font-medium text-slate-800 hover:border-brand-400 hover:bg-brand-50/50">
             <Icon className="h-[18px] w-[18px] text-brand-700" /> {label}
           </Link>
         ))}
@@ -275,7 +275,7 @@ export default function Dashboard() {
               </span>
               <div>
                 <p className="font-medium text-brand-900">{title}</p>
-                <p className="mt-0.5 text-brand-900/70">{text}</p>
+                <p className="mt-0.5 text-brand-900/80">{text}</p>
               </div>
             </li>
           ))}

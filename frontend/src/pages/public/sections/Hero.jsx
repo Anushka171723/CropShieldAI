@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ArrowRight, Info } from 'lucide-react'
 import LeafAccent from '../../../components/landing/LeafAccent'
 import SmartImage from '../../../components/landing/SmartImage'
@@ -10,7 +10,7 @@ const rise = (step) => ({ className: 'motion-safe:animate-rise', style: { animat
 export default function Hero() {
   const cta = useCta()
   return (
-    <section id="home" className="relative scroll-mt-16 overflow-hidden bg-linear-to-b from-[#f2f7ee] to-white">
+    <section id="home" className="relative scroll-mt-16 overflow-hidden bg-linear-to-b from-hero to-surface">
       <LeafAccent className="absolute -left-16 bottom-0 hidden h-[70%] text-brand-700 opacity-[0.07] lg:block" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_1.1fr] lg:gap-14 lg:px-8 lg:py-20">

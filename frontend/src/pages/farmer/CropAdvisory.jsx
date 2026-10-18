@@ -51,7 +51,7 @@ export default function CropAdvisory() {
         </div>
 
         {/* Language selector: UI only today. Only English copy exists; other languages note that and fall back. */}
-        <label className="flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm">
+        <label className="flex items-center gap-2 rounded-lg border border-slate-300 bg-surface px-3 py-2 text-sm focus-within:border-brand-600 focus-within:ring-2 focus-within:ring-brand-200">
           <Globe className="h-4 w-4 text-slate-500" />
           <select value={language} onChange={(e) => setLanguage(e.target.value)} aria-label="Advisory language" className="bg-transparent text-sm font-medium text-slate-800 focus:outline-none">
             {ADVISORY_LANGUAGES.map((l) => (
@@ -77,7 +77,7 @@ export default function CropAdvisory() {
         <p className="mt-1">{review.text}</p>
       </div>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-xl border border-slate-200 bg-surface p-5">
         <h2 className="flex items-center gap-2 font-semibold text-slate-900">
           <ShieldCheck className="h-[18px] w-[18px] text-brand-700" /> General preventive measures
         </h2>
@@ -91,7 +91,7 @@ export default function CropAdvisory() {
         </ul>
       </section>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-xl border border-slate-200 bg-surface p-5">
         <h2 className="flex items-center gap-2 font-semibold text-slate-900">
           <ListChecks className="h-[18px] w-[18px] text-brand-700" /> Recommended next steps
         </h2>
@@ -112,7 +112,7 @@ export default function CropAdvisory() {
 
       <Link
         to={`/farmer/reports/${advisory.reportId}`}
-        className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3.5 text-sm font-semibold text-slate-800 hover:border-brand-400 hover:bg-brand-50/50"
+        className="flex items-center justify-between rounded-lg border border-slate-200 bg-surface px-4 py-3.5 text-sm font-semibold text-slate-800 hover:border-brand-400 hover:bg-brand-50/50"
       >
         Back to related report <ArrowRight className="h-4 w-4 text-brand-700" />
       </Link>

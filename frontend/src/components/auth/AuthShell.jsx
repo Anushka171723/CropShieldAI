@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import Logo from '../Logo'
+import ThemeToggle from '../ThemeToggle'
 import SmartImage from '../landing/SmartImage'
 
 // Shared frame for Login, Register and Forgot Password: field photo with a flat green overlay on large
@@ -8,7 +9,7 @@ import SmartImage from '../landing/SmartImage'
 export default function AuthShell({ panel, title, subtitle, children, footer }) {
   return (
     <div className="grid min-h-screen lg:grid-cols-[1fr_1.1fr]">
-      <aside className="relative hidden overflow-hidden bg-brand-900 text-white lg:flex lg:flex-col lg:justify-between lg:p-12">
+      <aside className="keep-brand-light relative hidden overflow-hidden bg-brand-900 text-white lg:flex lg:flex-col lg:justify-between lg:p-12">
         <SmartImage src="/images/hero-farmer-wheat.jpg" alt="" position="60% center" className="absolute inset-0 h-full w-full" />
         <div className="absolute inset-0 bg-brand-950/80" aria-hidden="true" />
         <Link to="/" className="relative w-fit rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" aria-label="CropShield AI home">
@@ -36,7 +37,10 @@ export default function AuthShell({ panel, title, subtitle, children, footer }) 
           <Link to="/" className="inline-flex items-center gap-1.5 rounded-md text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
             <ArrowLeft className="h-4 w-4" /> Back to home
           </Link>
-          <Logo className="lg:hidden" />
+          <div className="flex items-center gap-2">
+            <Logo className="lg:hidden" />
+            <ThemeToggle />
+          </div>
         </div>
 
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-8">

@@ -16,7 +16,7 @@ const NOTIFICATION_TOGGLES = [
   { key: 'followUpReminders', label: 'Follow-up reminders', hint: 'When a follow-up on one of your cases is due.' },
 ]
 
-const fieldClass = 'block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-[15px] text-slate-900 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200'
+const fieldClass = 'block w-full rounded-lg border border-slate-300 bg-surface px-3.5 py-2.5 text-[15px] text-slate-900 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200'
 
 function Toggle({ checked, onChange, disabled, label }) {
   return (
@@ -29,14 +29,14 @@ function Toggle({ checked, onChange, disabled, label }) {
       onClick={() => onChange(!checked)}
       className={`relative h-6 w-11 shrink-0 rounded-full transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 ${checked ? 'bg-brand-700' : 'bg-slate-300'} disabled:opacity-60`}
     >
-      <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition ${checked ? 'left-5' : 'left-0.5'}`} />
+      <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-surface shadow transition ${checked ? 'left-5' : 'left-0.5'}`} />
     </button>
   )
 }
 
 function Section({ icon: Icon, title, children }) {
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-5">
+    <section className="rounded-xl border border-slate-200 bg-surface p-5">
       <h2 className="flex items-center gap-2 font-semibold text-slate-900">
         <Icon className="h-[18px] w-[18px] text-brand-700" /> {title}
       </h2>
@@ -167,7 +167,7 @@ export default function Profile() {
                   aria-pressed={on}
                   onClick={() => toggleCrop(crop)}
                   className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition ${
-                    on ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-brand-400'
+                    on ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-surface text-slate-700 hover:border-brand-400'
                   }`}
                 >
                   {crop}
@@ -187,7 +187,7 @@ export default function Profile() {
                 aria-pressed={profile.language === l.code}
                 onClick={() => set('language')(l.code)}
                 className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition ${
-                  profile.language === l.code ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-brand-400'
+                  profile.language === l.code ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-surface text-slate-700 hover:border-brand-400'
                 }`}
               >
                 {l.label}
@@ -252,7 +252,7 @@ export default function Profile() {
           type="button"
           onClick={handleLogout}
           disabled={loggingOut}
-          className="mt-4 inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-60"
+          className="mt-4 inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-surface px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-60"
         >
           {loggingOut ? <Loader2 className="h-4 w-4 animate-spin" /> : <LogOut className="h-4 w-4" />}
           Log out

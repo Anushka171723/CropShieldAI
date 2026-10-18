@@ -85,7 +85,7 @@ export default function FollowUpDetails() {
       </div>
 
       {report && (
-        <section className="rounded-xl border border-slate-200 bg-white p-5">
+        <section className="rounded-xl border border-slate-200 bg-surface p-5">
           <h2 className="font-semibold text-slate-900">Previous report & advisory</h2>
           <p className="mt-2 text-sm text-slate-700">{report.issue}</p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -104,7 +104,7 @@ export default function FollowUpDetails() {
       )}
 
       {/* Update form */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-xl border border-slate-200 bg-surface p-5">
         <h2 className="font-semibold text-slate-900">Record an update</h2>
 
         {status === 'success' && (
@@ -130,7 +130,7 @@ export default function FollowUpDetails() {
                     setFormError('')
                   }}
                   className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
-                    outcome === o ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-brand-400'
+                    outcome === o ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-surface text-slate-700 hover:border-brand-400'
                   }`}
                 >
                   {o}
@@ -151,7 +151,7 @@ export default function FollowUpDetails() {
               onChange={(e) => setNote(e.target.value)}
               disabled={busy}
               placeholder="e.g. Fewer spots on new leaves, but older leaves still affected"
-              className="block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-[15px] text-slate-900 placeholder:text-slate-400 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              className="block w-full rounded-lg border border-slate-300 bg-surface px-3.5 py-2.5 text-[15px] text-slate-900 placeholder:text-slate-400 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200"
             />
           </div>
 
@@ -188,7 +188,7 @@ export default function FollowUpDetails() {
       </section>
 
       {/* Timeline */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-xl border border-slate-200 bg-surface p-5">
         <h2 className="flex items-center gap-2 font-semibold text-slate-900">
           <Sparkles className="h-[18px] w-[18px] text-brand-700" /> Follow-up timeline
         </h2>

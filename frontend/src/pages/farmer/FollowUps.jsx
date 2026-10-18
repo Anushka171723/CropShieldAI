@@ -45,7 +45,7 @@ export default function FollowUps() {
             type="button"
             onClick={() => setStatus(s)}
             className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition ${
-              status === s ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-brand-400'
+              status === s ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-surface text-slate-700 hover:border-brand-400'
             }`}
           >
             {s}
@@ -65,7 +65,7 @@ export default function FollowUps() {
             const due = dueLabel(f.dueDate)
             return (
               <li key={f.id}>
-                <Link to={`/farmer/follow-ups/${f.id}`} className="flex items-center gap-4 rounded-lg border border-slate-200 bg-white px-4 py-3.5 hover:border-brand-400 hover:bg-brand-50/40">
+                <Link to={`/farmer/follow-ups/${f.id}`} className="flex items-center gap-4 rounded-lg border border-slate-200 bg-surface px-4 py-3.5 hover:border-brand-400 hover:bg-brand-50/40">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100">
                     <Leaf className="h-5 w-5 text-slate-400" />
                   </span>

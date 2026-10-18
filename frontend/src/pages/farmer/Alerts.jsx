@@ -9,7 +9,7 @@ import { timeAgo } from '../../utils/format'
 const TYPE_ICON = { Weather: CloudRain, 'Crop health': AlertTriangle, 'Expert review': ShieldAlert, 'Follow-up': CalendarClock }
 const SEVERITY_TONE = { High: 'bg-red-50 text-red-600', Medium: 'bg-amber-50 text-amber-600', Low: 'bg-emerald-50 text-emerald-600', Info: 'bg-sky-50 text-sky-600' }
 const READ_STATE_OPTIONS = ['All', 'Unread', 'Read']
-const selectClass = 'rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200'
+const selectClass = 'rounded-lg border border-slate-300 bg-surface px-3 py-2 text-sm text-slate-700 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200'
 
 export default function Alerts() {
   const [alerts, setAlerts] = useState([])
@@ -97,7 +97,7 @@ export default function Alerts() {
       ) : alerts.length === 0 ? (
         <EmptyState icon={Bell} title="No alerts" text="Nothing matches these filters right now." />
       ) : (
-        <ul className="divide-y divide-slate-100 rounded-xl border border-slate-200 bg-white">
+        <ul className="divide-y divide-slate-100 rounded-xl border border-slate-200 bg-surface">
           {alerts.map((a) => {
             const Icon = TYPE_ICON[a.type] || Bell
             return (

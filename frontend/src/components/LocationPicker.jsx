@@ -60,7 +60,7 @@ export default function LocationPicker({ value, onChange, error, disabled }) {
           type="button"
           onClick={useGps}
           disabled={disabled || locating}
-          className="inline-flex items-center gap-2 rounded-lg border border-brand-600 bg-white px-4 py-2 text-sm font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-lg border border-brand-600 bg-surface px-4 py-2 text-sm font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-60"
         >
           {locating ? <Loader2 className="h-4 w-4 animate-spin" /> : <LocateFixed className="h-4 w-4" />}
           {locating ? 'Getting location...' : 'Use my current location'}

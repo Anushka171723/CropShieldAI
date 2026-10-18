@@ -22,7 +22,7 @@ const FOLLOW = [
 
 export default function FeaturesSection() {
   return (
-    <section id="features" aria-labelledby="features-heading" className="scroll-mt-16 bg-[#f6f9f3]">
+    <section id="features" aria-labelledby="features-heading" className="scroll-mt-16 bg-section">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <Reveal>
           <SectionHeading id="features-heading" eyebrow="Features" title="Everything from the first photo to the final follow-up.">
@@ -49,7 +49,7 @@ export default function FeaturesSection() {
             <Reveal key={title} delay={i * 100}>
               <div
                 className={`h-full rounded-xl p-7 transition-[transform,box-shadow,border-color] duration-300 sm:p-8 motion-safe:hover:-translate-y-0.5 hover:shadow-lg ${
-                  i === 0 ? 'bg-brand-900 text-white hover:shadow-brand-900/25' : 'border border-slate-200 bg-white hover:border-brand-300 hover:shadow-slate-300/50'
+                  i === 0 ? 'keep-brand-light bg-brand-900 text-white hover:shadow-brand-900/25' : 'border border-slate-200 bg-surface hover:border-brand-300 hover:shadow-slate-300/50'
                 }`}
               >
                 <Icon className={`h-8 w-8 ${i === 0 ? 'text-brand-300' : 'text-brand-700'}`} strokeWidth={1.5} />
@@ -63,7 +63,7 @@ export default function FeaturesSection() {
         {/* 3. Ruled list: row tints on hover */}
         <Reveal as="ul" className="mt-14 divide-y divide-slate-300 border-y border-slate-300">
           {FOLLOW.map(({ icon: Icon, title, text }) => (
-            <li key={title} className="group grid items-start gap-3 py-6 transition-colors duration-200 hover:bg-white/70 sm:grid-cols-[2.5rem_16rem_1fr] sm:gap-6 sm:px-3">
+            <li key={title} className="group grid items-start gap-3 py-6 transition-colors duration-200 hover:bg-surface/70 sm:grid-cols-[2.5rem_16rem_1fr] sm:gap-6 sm:px-3">
               <Icon className="h-6 w-6 text-brand-700 transition-colors duration-200 group-hover:text-brand-500" strokeWidth={1.7} />
               <h3 className="font-semibold text-brand-900">{title}</h3>
               <p className="text-slate-600">{text}</p>

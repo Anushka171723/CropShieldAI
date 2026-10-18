@@ -2,7 +2,7 @@ import Reveal from '../../../components/landing/Reveal'
 
 export default function AboutSection() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="scroll-mt-16 bg-linear-to-b from-white to-[#f2f7ee]">
+    <section id="about" aria-labelledby="about-heading" className="scroll-mt-16 bg-linear-to-b from-surface to-hero">
       <Reveal className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:py-24">
         <p className="text-sm font-semibold uppercase tracking-wider text-brand-700">About CropShield AI</p>
         <h2 id="about-heading" className="mt-2 text-3xl font-bold leading-snug tracking-tight text-brand-900 sm:text-4xl">

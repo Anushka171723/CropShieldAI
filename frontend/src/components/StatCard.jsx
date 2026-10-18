@@ -7,7 +7,7 @@ const TONES = {
 
 export default function StatCard({ label, value, icon: Icon, tone = 'green', hint }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
+    <div className="rounded-xl border border-slate-200 bg-surface p-4 shadow-sm sm:p-5">
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-slate-600">{label}</p>
         <span className={`flex h-9 w-9 items-center justify-center rounded-lg ${TONES[tone]}`}>

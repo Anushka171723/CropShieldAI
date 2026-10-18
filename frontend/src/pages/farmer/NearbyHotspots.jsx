@@ -15,7 +15,7 @@ const DAYS_OPTIONS = [
   { value: '7', label: 'Last 7 days' },
   { value: '14', label: 'Last 14 days' },
 ]
-const selectClass = 'rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200'
+const selectClass = 'rounded-lg border border-slate-300 bg-surface px-3 py-2 text-sm text-slate-700 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200'
 
 function Recenter({ center }) {
   const map = useMap()
@@ -111,7 +111,7 @@ export default function NearbyHotspots() {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 sm:flex-row sm:items-center sm:gap-4">
+      <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-surface p-4 sm:flex-row sm:items-center sm:gap-4">
         <select value={crop} onChange={(e) => setCrop(e.target.value)} aria-label="Filter by crop" className={selectClass}>
           <option value="All">All crops</option>
           {filterOptions.crops.map((c) => (
@@ -138,7 +138,7 @@ export default function NearbyHotspots() {
           ))}
         </select>
 
-        <button type="button" onClick={useMyLocation} disabled={locating} className="ml-auto inline-flex items-center gap-2 rounded-lg border border-brand-600 bg-white px-3.5 py-2 text-sm font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-60">
+        <button type="button" onClick={useMyLocation} disabled={locating} className="ml-auto inline-flex items-center gap-2 rounded-lg border border-brand-600 bg-surface px-3.5 py-2 text-sm font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-60">
           {locating ? <Loader2 className="h-4 w-4 animate-spin" /> : <LocateFixed className="h-4 w-4" />}
           {locating ? 'Locating...' : 'Use my location'}
         </button>
@@ -182,7 +182,7 @@ export default function NearbyHotspots() {
             </CircleMarker>
           </MapContainer>
 
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-slate-200 bg-white px-4 py-3 text-xs text-slate-600">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-slate-200 bg-surface px-4 py-3 text-xs text-slate-600">
             <span className="flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-full bg-blue-600" /> {deviceLocation ? 'Your location' : 'Your farm'}
             </span>
@@ -210,22 +210,22 @@ export default function NearbyHotspots() {
               </div>
               <dl className="mt-3 grid grid-cols-2 gap-2 text-sm text-brand-900/90">
                 <div>
-                  <dt className="text-xs text-brand-700/70">Reports</dt>
+                  <dt className="text-xs text-brand-700">Reports</dt>
                   <dd className="font-medium">{selected.cases}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-brand-700/70">Distance</dt>
+                  <dt className="text-xs text-brand-700">Distance</dt>
                   <dd className="font-medium">{selected.distanceKm.toFixed(1)} km</dd>
                 </div>
                 <div className="col-span-2">
-                  <dt className="text-xs text-brand-700/70">Last reported</dt>
+                  <dt className="text-xs text-brand-700">Last reported</dt>
                   <dd className="font-medium">{formatDate(selected.lastReportedAt)}</dd>
                 </div>
               </dl>
             </div>
           )}
 
-          <div className="rounded-xl border border-slate-200 bg-white">
+          <div className="rounded-xl border border-slate-200 bg-surface">
             <h2 className="px-4 pt-4 font-semibold text-slate-900 sm:px-5">Hotspots near you ({hotspots.length})</h2>
             {hotspots.length === 0 ? (
               <EmptyState icon={MapPin} title="No hotspots match your filters" text="Try a different crop, type or date range." />

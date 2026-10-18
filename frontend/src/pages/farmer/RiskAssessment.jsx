@@ -53,7 +53,7 @@ export default function RiskAssessment() {
       </div>
 
       {/* Headline risk */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-xl border border-slate-200 bg-surface p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-sm font-medium text-slate-500">Crop-health risk level</p>
@@ -67,7 +67,7 @@ export default function RiskAssessment() {
       </section>
 
       {/* Weather context */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-xl border border-slate-200 bg-surface p-5">
         <h2 className="font-semibold text-slate-900">Sample weather context</h2>
         <dl className="mt-4 grid grid-cols-3 gap-3 text-center sm:grid-cols-4">
           {[
@@ -87,7 +87,7 @@ export default function RiskAssessment() {
       </section>
 
       {/* Contributing factors */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-xl border border-slate-200 bg-surface p-5">
         <h2 className="font-semibold text-slate-900">Why the risk may be elevated</h2>
         <ul className="mt-3 space-y-3">
           {risk.factors.map((f, i) => (
@@ -103,7 +103,7 @@ export default function RiskAssessment() {
       </section>
 
       {/* Preventive actions */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-xl border border-slate-200 bg-surface p-5">
         <h2 className="flex items-center gap-2 font-semibold text-slate-900">
           <ShieldCheck className="h-[18px] w-[18px] text-brand-700" /> Suggested preventive actions
         </h2>
@@ -120,7 +120,7 @@ export default function RiskAssessment() {
 
       <Link
         to={`/farmer/reports/${risk.reportId}/advisory`}
-        className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3.5 text-sm font-semibold text-slate-800 hover:border-brand-400 hover:bg-brand-50/50"
+        className="flex items-center justify-between rounded-lg border border-slate-200 bg-surface px-4 py-3.5 text-sm font-semibold text-slate-800 hover:border-brand-400 hover:bg-brand-50/50"
       >
         View crop advisory <ArrowRight className="h-4 w-4 text-brand-700" />
       </Link>

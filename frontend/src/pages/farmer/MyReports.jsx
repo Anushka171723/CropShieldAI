@@ -11,7 +11,7 @@ const SORT_OPTIONS = [
   { value: 'oldest', label: 'Oldest first' },
 ]
 
-const selectClass = 'rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200'
+const selectClass = 'rounded-lg border border-slate-300 bg-surface px-3 py-2 text-sm text-slate-700 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200'
 
 export default function MyReports() {
   const [reports, setReports] = useState([])
@@ -64,7 +64,7 @@ export default function MyReports() {
       </div>
 
       {/* Search + filters */}
-      <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 sm:flex-row sm:items-center sm:gap-4">
+      <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-surface p-4 sm:flex-row sm:items-center sm:gap-4">
         <div className="relative flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <input
@@ -73,7 +73,7 @@ export default function MyReports() {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by crop or report ID"
             aria-label="Search reports"
-            className="w-full rounded-lg border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200"
+            className="w-full rounded-lg border border-slate-300 bg-surface py-2 pl-9 pr-3 text-sm focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200"
           />
         </div>
 

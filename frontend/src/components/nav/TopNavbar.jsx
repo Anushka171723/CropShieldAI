@@ -5,6 +5,7 @@ import { NAV_ITEMS } from '../../config/navigation'
 import { useAuth } from '../../hooks/useAuth'
 import { ROLE_HOME, ROLE_LABEL } from '../../utils/roles'
 import Logo from '../Logo'
+import ThemeToggle from '../ThemeToggle'
 
 function Avatar({ name }) {
   const initials = name
@@ -57,8 +58,8 @@ export default function TopNavbar({ extra = null }) {
     }`
 
   return (
-    <header className="sticky top-0 z-30 border-b border-slate-200 bg-white">
-      <div className="mx-auto flex h-14 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-30 border-b border-slate-200 bg-surface">
+      <div className="mx-auto flex h-14 max-w-7xl items-center gap-2 px-4 sm:gap-4 sm:px-6 lg:px-8">
         <Link to={ROLE_HOME[user.role]} aria-label="CropShield AI, go to dashboard" className="shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500">
           <Logo />
         </Link>
@@ -71,8 +72,10 @@ export default function TopNavbar({ extra = null }) {
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-1 sm:gap-3">
           {extra}
+
+          <ThemeToggle />
 
           <div className="relative" ref={menuRef}>
             <button
@@ -86,7 +89,7 @@ export default function TopNavbar({ extra = null }) {
               <ChevronDown className="h-4 w-4 text-slate-500" />
             </button>
             {menuOpen && (
-              <div role="menu" className="absolute right-0 mt-2 w-60 rounded-lg border border-slate-200 bg-white py-1 shadow-lg">
+              <div role="menu" className="absolute right-0 mt-2 w-60 rounded-lg border border-slate-200 bg-surface py-1 shadow-lg">
                 <div className="border-b border-slate-100 px-4 py-2.5">
                   <p className="truncate text-sm font-semibold text-slate-900">{user.name}</p>
                   <p className="truncate text-xs text-slate-500">{user.email}</p>
@@ -112,7 +115,7 @@ export default function TopNavbar({ extra = null }) {
       </div>
 
       {mobileOpen && (
-        <nav id="app-mobile-menu" className="border-t border-slate-100 bg-white px-4 py-2 motion-safe:animate-fade lg:hidden" aria-label="Mobile">
+        <nav id="app-mobile-menu" className="border-t border-slate-100 bg-surface px-4 py-2 motion-safe:animate-fade lg:hidden" aria-label="Mobile">
           {items.map(({ to, label, end }) => (
             <NavLink
               key={to}

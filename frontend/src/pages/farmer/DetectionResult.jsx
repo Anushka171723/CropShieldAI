@@ -64,7 +64,7 @@ export default function DetectionResult() {
 
       <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
         <div className="space-y-4">
-          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <div className="overflow-hidden rounded-xl border border-slate-200 bg-surface">
             {report.imageUrl ? (
               <img src={report.imageUrl} alt={`Submitted photo of ${report.crop}`} className="h-64 w-full bg-slate-100 object-cover" />
             ) : (
@@ -93,7 +93,7 @@ export default function DetectionResult() {
         </div>
 
         <div className="space-y-5">
-          <section className="rounded-xl border border-slate-200 bg-white p-5">
+          <section className="rounded-xl border border-slate-200 bg-surface p-5">
             <h2 className="font-semibold text-slate-900">
               {isHealthy ? (
                 <span className="flex items-center gap-2 text-emerald-700">
@@ -114,7 +114,7 @@ export default function DetectionResult() {
           </section>
 
           {detection.pest && (
-            <section className="rounded-xl border border-slate-200 bg-white p-5">
+            <section className="rounded-xl border border-slate-200 bg-surface p-5">
               <h2 className="flex items-center gap-2 font-semibold text-slate-900">
                 <Bug className="h-[18px] w-[18px] text-brand-700" /> Pest finding
               </h2>
@@ -124,7 +124,7 @@ export default function DetectionResult() {
             </section>
           )}
 
-          <section className="rounded-xl border border-slate-200 bg-white p-5">
+          <section className="rounded-xl border border-slate-200 bg-surface p-5">
             <h2 className="font-semibold text-slate-900">Detection summary</h2>
             <p className="mt-2 leading-relaxed text-slate-700">{detection.summary}</p>
             <p className="mt-3 flex items-center gap-1.5 text-xs text-slate-400">
@@ -135,13 +135,13 @@ export default function DetectionResult() {
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
               to={`/farmer/reports/${report.id}/risk`}
-              className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3.5 text-sm font-semibold text-slate-800 hover:border-brand-400 hover:bg-brand-50/50"
+              className="flex items-center justify-between rounded-lg border border-slate-200 bg-surface px-4 py-3.5 text-sm font-semibold text-slate-800 hover:border-brand-400 hover:bg-brand-50/50"
             >
               View risk assessment <ArrowRight className="h-4 w-4 text-brand-700" />
             </Link>
             <Link
               to={`/farmer/reports/${report.id}/advisory`}
-              className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3.5 text-sm font-semibold text-slate-800 hover:border-brand-400 hover:bg-brand-50/50"
+              className="flex items-center justify-between rounded-lg border border-slate-200 bg-surface px-4 py-3.5 text-sm font-semibold text-slate-800 hover:border-brand-400 hover:bg-brand-50/50"
             >
               View crop advisory <ArrowRight className="h-4 w-4 text-brand-700" />
             </Link>

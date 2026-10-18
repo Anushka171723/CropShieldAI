@@ -15,6 +15,10 @@
   --color-brand-900: #14532d;
   --color-brand-950: #052e16;
 
+  /* Tailwind's default slate-400 (#94a3b8) is only 2.6:1 on white, too faint for hints, "(optional)"
+     labels and placeholders. This keeps the same role at 4.7:1. */
+  --color-slate-400: #64748b;
+
   /* Motion tokens: short, ease-out, played once. Applied only with `motion-safe:` so reduced-motion users get none. */
   --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-fade: fade 0.9s ease-out both;
@@ -46,6 +50,189 @@
       transform: scale(1.06);
     }
   }
+}
+
+/* ------------------------------------------------------------------------------------------------
+   Theme tokens. These are the light-theme values; the dark block below replaces them.
+   Use the utilities (bg-page, bg-surface, bg-section, from-hero ...) instead of hardcoded hex values.
+     page     the app background behind everything
+     surface  cards, header, inputs, menus
+     section  alternate band on the landing page
+     hero     soft tint at the top of the landing page
+     line     borders and dividers      ink / ink-muted  text      accent  links and highlights
+   `static` keeps every token in the output even when only the dark block refers to it.
+   ------------------------------------------------------------------------------------------------ */
+@theme static {
+  --color-page: #f8faf7;
+  --color-surface: #ffffff;
+  --color-section: #f6f9f3;
+  --color-hero: #f2f7ee;
+  --color-line: #e2e8f0;
+  --color-ink: #1c2b21;
+  --color-ink-muted: #475569;
+  --color-accent: #15803d;
+}
+
+/* ------------------------------------------------------------------------------------------------
+   Dark Forest Green theme. ThemeProvider (and the inline script in index.html) set data-theme="dark"
+   on <html>. Redefining the colour variables here re-themes every existing utility class at once:
+   text-slate-900, border-slate-200, bg-brand-50, bg-red-50 and so on all read these variables.
+
+   Palette:  background #111A17   cards #1B2621   borders #34443A   primary #267747
+             accent #83C995       text #F0F5F1    muted text #AABCB0
+   ------------------------------------------------------------------------------------------------ */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-page: #111a17;
+  --color-surface: #1b2621;
+  --color-section: #111a17;
+  --color-hero: #16221d;
+  --color-line: #34443a;
+  --color-ink: #f0f5f1;
+  --color-ink-muted: #aabcb0;
+  --color-accent: #83c995;
+
+  /* Neutrals: 900 is the main text, 500-600 the muted text, 200 the border colour, 50-100 raised fills. */
+  --color-slate-50: #212c26;
+  --color-slate-100: #26332b;
+  --color-slate-200: #34443a;
+  --color-slate-300: #5f7567; /* input and control borders: needs 3:1 against the card, unlike decorative card borders */
+  --color-slate-400: #8ca095;
+  --color-slate-500: #aabcb0;
+  --color-slate-600: #aabcb0;
+  --color-slate-700: #c9d6cd;
+  --color-slate-800: #e3ebe5;
+  --color-slate-900: #f0f5f1;
+
+  /* Brand greens: 50-200 become dark tints, 300-400 the soft accent, 700-950 solid fills for buttons and panels. */
+  --color-brand-50: #1d2d24;
+  --color-brand-100: #243a2d;
+  --color-brand-200: #2e4a39;
+  --color-brand-300: #83c995;
+  --color-brand-400: #6fb383;
+  --color-brand-500: #4e9a64;
+  --color-brand-600: #3a8a55;
+  --color-brand-700: #267747;
+  --color-brand-800: #267747;
+  --color-brand-900: #1a4d31;
+  --color-brand-950: #0f2a1b;
+
+  /* Status colours: muted dark tints for backgrounds and borders (text colours are set further down). */
+  --color-red-50: #3a2124;
+  --color-red-100: #482a2d;
+  --color-red-200: #6a3a3e;
+  --color-red-300: #8c4d52;
+  --color-amber-50: #38301a;
+  --color-amber-100: #473b1f;
+  --color-amber-200: #67552b;
+  --color-amber-300: #8a7035;
+  --color-emerald-50: #1c3a2c;
+  --color-emerald-100: #234535;
+  --color-emerald-200: #2e5e47;
+  --color-emerald-300: #3e7c5e;
+  --color-emerald-500: #4faf7f;
+  --color-emerald-600: #267747;
+  --color-sky-50: #1a3140;
+  --color-sky-100: #213d50;
+  --color-sky-200: #2c5671;
+  --color-sky-300: #3b7092;
+
+  --text-danger: #f4b7b0;
+  --text-warning: #f2d08f;
+  --text-success: #9ed9b3;
+  --text-info: #a5d0ec;
+}
+
+/* Panels that are dark in BOTH themes (photo side of the sign-in pages, final call to action, the dark
+   feature card). Their pale green text and tints must not follow the dark remap above. */
+.keep-brand-light {
+  --color-brand-50: #f0fdf4;
+  --color-brand-100: #dcfce7;
+  --color-brand-200: #bbf7d0;
+}
+/* Keyboard focus on these panels needs a light outline: the default brand-500 is only ~2.9:1 on the dark green. */
+.keep-brand-light :focus-visible {
+  outline-color: var(--color-brand-300);
+}
+/* If the photo behind such a panel ever fails to load, its fallback block must not be a pale slab. */
+:root[data-theme='dark'] .keep-brand-light .bg-brand-100 {
+  background-color: var(--color-brand-900);
+}
+
+/* One colour step is used as text in some places and as a fill in others (for example text-brand-900 on
+   headings but bg-brand-900 on panels). The fills stay as defined above; these rules set the text roles. */
+:root[data-theme='dark'] :is(.text-brand-900) {
+  color: var(--color-ink);
+}
+:root[data-theme='dark'] :is(.text-brand-900\/70, .text-brand-900\/80, .text-brand-900\/90) {
+  color: color-mix(in srgb, var(--color-ink) 82%, transparent);
+}
+:root[data-theme='dark'] :is(.text-brand-600, .text-brand-700, .text-brand-800, .hover\:text-brand-800:hover) {
+  color: var(--color-accent);
+}
+:root[data-theme='dark'] .text-brand-700\/60 {
+  color: color-mix(in srgb, var(--color-accent) 60%, transparent);
+}
+:root[data-theme='dark'] :is(.text-red-600, .text-red-700) {
+  color: var(--text-danger);
+}
+:root[data-theme='dark'] :is(.text-amber-600, .text-amber-700, .text-amber-800, .text-amber-900, .text-amber-900\/90) {
+  color: var(--text-warning);
+}
+:root[data-theme='dark'] :is(.text-emerald-600, .text-emerald-700, .text-emerald-800) {
+  color: var(--text-success);
+}
+:root[data-theme='dark'] :is(.text-sky-600, .text-sky-700, .text-sky-800) {
+  color: var(--text-info);
+}
+
+/* Focus rings offset against the dark page instead of white. */
+:root[data-theme='dark'] * {
+  --tw-ring-offset-color: var(--color-page);
+}
+
+/* Placeholders: inputs that do not set their own colour would otherwise get the browser's default grey. */
+::placeholder {
+  color: var(--color-slate-400);
+  opacity: 1;
+}
+
+/* Native dropdown lists follow the surface colour. */
+select option {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+}
+
+/* Maps: OpenStreetMap tiles are light, so dim them a little in dark mode and theme the Leaflet controls. */
+:root[data-theme='dark'] .leaflet-container {
+  background-color: var(--color-slate-100); /* shows while tiles load; Leaflet's default is a bright grey */
+}
+:root[data-theme='dark'] .leaflet-tile-pane {
+  filter: brightness(0.78) contrast(1.05) saturate(0.85);
+}
+:root[data-theme='dark'] .leaflet-popup-content-wrapper,
+:root[data-theme='dark'] .leaflet-popup-tip {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+}
+:root[data-theme='dark'] .leaflet-container a.leaflet-popup-close-button {
+  color: var(--color-ink-muted);
+}
+:root[data-theme='dark'] .leaflet-bar a {
+  background-color: var(--color-surface);
+  border-bottom-color: var(--color-line);
+  color: var(--color-ink);
+}
+:root[data-theme='dark'] .leaflet-bar a:hover {
+  background-color: var(--color-slate-100);
+}
+:root[data-theme='dark'] .leaflet-control-attribution {
+  background-color: color-mix(in srgb, var(--color-surface) 82%, transparent);
+  color: var(--color-ink-muted);
+}
+:root[data-theme='dark'] .leaflet-control-attribution a {
+  color: var(--color-accent);
 }
 
 /* Shared button styles for the public pages. Size/padding is set where used. */
@@ -80,11 +267,15 @@
     gap: 0.5rem;
     border-radius: 0.5rem;
     border: 1px solid color-mix(in srgb, var(--color-brand-800) 35%, transparent);
-    background-color: #fff;
+    background-color: var(--color-surface);
     color: var(--color-brand-900);
     font-size: 0.875rem;
     font-weight: 600;
     transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
+  }
+  :root[data-theme='dark'] .btn-secondary {
+    color: var(--color-accent);
+    border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
   }
   .btn-secondary:hover {
     background-color: var(--color-brand-50);
@@ -95,6 +286,7 @@
     transform: translateY(1px);
   }
 
+  /* Used on the always-dark call-to-action panel, so it keeps fixed light colours in both themes. */
   .btn-light {
     display: inline-flex;
     align-items: center;
@@ -102,13 +294,13 @@
     gap: 0.5rem;
     border-radius: 0.5rem;
     background-color: #fff;
-    color: var(--color-brand-900);
+    color: #14532d;
     font-size: 0.875rem;
     font-weight: 600;
     transition: background-color 0.2s, transform 0.1s;
   }
   .btn-light:hover {
-    background-color: var(--color-brand-100);
+    background-color: #dcfce7;
   }
   .btn-light:active {
     transform: translateY(1px);
@@ -151,8 +343,8 @@ html {
 
 body {
   margin: 0;
-  background: #f8faf7;
-  color: #1c2b21;
+  background: var(--color-page);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }

@@ -15,7 +15,7 @@ export default function TextField({ label, icon: Icon, error, hint, trailing, cl
           id={id}
           aria-invalid={Boolean(error)}
           aria-describedby={describedBy}
-          className={`block w-full rounded-lg border bg-white py-2.5 text-[15px] text-slate-900 placeholder:text-slate-400 transition focus:outline-none focus:ring-2 disabled:bg-slate-50 disabled:text-slate-500 ${
+          className={`block w-full rounded-lg border bg-surface py-2.5 text-[15px] text-slate-900 placeholder:text-slate-400 transition focus:outline-none focus:ring-2 disabled:bg-slate-50 disabled:text-slate-500 ${
             Icon ? 'pl-10' : 'pl-3.5'
           } ${trailing ? 'pr-11' : 'pr-3.5'} ${
             error

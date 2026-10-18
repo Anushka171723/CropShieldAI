@@ -12,7 +12,7 @@ export default function Logo({ light = false, className = '' }) {
         <Leaf className="absolute h-3.5 w-3.5" strokeWidth={2.2} />
       </span>
       <span className={`text-xl font-bold tracking-tight ${light ? 'text-white' : 'text-brand-900'}`}>
-        CropShield<span className={light ? 'font-medium text-brand-200' : 'font-medium text-brand-600'}> AI</span>
+        CropShield<span className={light ? 'font-medium text-brand-200' : 'font-medium text-brand-700'}> AI</span>
       </span>
     </div>
   )

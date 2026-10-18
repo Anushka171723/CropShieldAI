@@ -8,7 +8,7 @@ export default function ReportCard({ report }) {
   return (
     <Link
       to={`/farmer/reports/${report.id}`}
-      className="flex items-center gap-4 rounded-lg border border-slate-200 bg-white px-4 py-3.5 transition hover:border-brand-400 hover:bg-brand-50/40"
+      className="flex items-center gap-4 rounded-lg border border-slate-200 bg-surface px-4 py-3.5 transition hover:border-brand-400 hover:bg-brand-50/40"
     >
       <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-slate-100">
         {report.imageUrl ? (
