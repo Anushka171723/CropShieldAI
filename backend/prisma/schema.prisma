@@ -1,0 +1,107 @@
+// Models are added phase by phase (User in Phase B, CropReport in Phase C).
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  FARMER
+  EXPERT
+  OFFICER
+  ADMIN
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique // always stored lowercase
+  phone        String // 10-digit Indian mobile number
+  passwordHash String // bcrypt hash only. The real password is never stored.
+  role         Role     @default(FARMER)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  reports      CropReport[]
+
+  @@index([role])
+}
+
+enum ReviewStatus {
+  PENDING
+  VALIDATED
+  CORRECTED
+}
+
+enum CaseStatus {
+  ACTIVE
+  RESOLVED
+}
+
+// A crop-health report submitted by a farmer.
+// AI results (disease / pest / risk) are NOT stored here: Phase E adds a separate Prediction model linked to this one.
+model CropReport {
+  id            Int          @id @default(autoincrement()) // shown to users as "rpt-0001"
+  userId        String
+  user          User         @relation(fields: [userId], references: [id], onDelete: Restrict) // a user with reports cannot be deleted by accident
+  crop          String
+  variety       String?
+  growthStage   String
+  plot          String       @default("My field") // the frontend displays this; the form has no plot field yet
+  symptoms      String[]
+  notes         String?
+  symptomStart  DateTime?    @db.Date
+  latitude      Float
+  longitude     Float
+  imageUrl      String? // filled in Phase D (Cloudinary secure URL)
+  imagePublicId String? // filled in Phase D (needed to delete/replace the image later)
+  reviewStatus  ReviewStatus @default(PENDING)
+  caseStatus    CaseStatus   @default(ACTIVE)
+  predictionStatus PredictionStatus @default(PENDING) // did the AI analysis run for this report?
+  prediction    Prediction?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([userId, createdAt])
+  @@index([reviewStatus])
+  @@index([caseStatus])
+  @@index([crop])
+}
+
+enum PredictionStatus {
+  PENDING // analysis has not run yet (or is being retried)
+  COMPLETED
+  FAILED // the AI service was down, too slow, or answered with invalid data. The report itself is still saved.
+}
+
+// MOCK = simulated by this backend (symptom rules, no real AI). AI_SERVICE = answered by the separate FastAPI service.
+enum PredictionSource {
+  MOCK
+  AI_SERVICE
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+// The AI result for one report. Kept separate from CropReport so the report stays clean and results can grow later.
+model Prediction {
+  id                Int              @id @default(autoincrement())
+  reportId          Int              @unique // one result per report for now
+  report            CropReport       @relation(fields: [reportId], references: [id], onDelete: Cascade) // a result is meaningless without its report
+  source            PredictionSource
+  modelVersion      String?
+  disease           String? // null = no disease found
+  diseaseConfidence Float? // 0 to 1
+  pest              String? // null = no pest found
+  pestConfidence    Float? // 0 to 1
+  riskLevel         RiskLevel
+  createdAt         DateTime         @default(now())
+
+  @@index([riskLevel])
+  @@index([disease])
+}
